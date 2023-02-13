@@ -1,3 +1,4 @@
+
 /*
  * -------------------------------------------------------
  * THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
@@ -7,30 +8,29 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export class NewVideo {
-  title: string;
-  url: string;
-  userId: string;
+export class NewProduct {
+    title: string;
+    price: number;
+    qty: number;
+    description?: Nullable<string>;
+    category?: Nullable<string>;
 }
 
-export class Video {
-  id: string;
-  title: string;
-  url: string;
-  author: User;
-}
-
-export class User {
-  id: string;
-  name: string;
+export class Product {
+    id: string;
+    title: string;
+    price: number;
+    qty: number;
+    description?: Nullable<string>;
+    category?: Nullable<string>;
 }
 
 export abstract class IQuery {
-  abstract videos(): Video[] | Promise<Video[]>;
+    abstract getAllProducts(): Nullable<Product>[] | Promise<Nullable<Product>[]>;
 }
 
 export abstract class IMutation {
-  abstract createVideo(input: NewVideo): Video | Promise<Video>;
+    abstract createProduct(input?: Nullable<NewProduct>): Nullable<Product> | Promise<Nullable<Product>>;
 }
 
 type Nullable<T> = T | null;

@@ -1,7 +1,7 @@
 import { ApolloDriver } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
-import { VideoModule } from './videos/video.module';
+import { ProductModule } from './product/product.module';
 
 @Module({
   imports: [
@@ -9,7 +9,7 @@ import { VideoModule } from './videos/video.module';
       driver: ApolloDriver,
       typePaths: ['./**/*/*.graphql'],
     }),
-    VideoModule,
+    ProductModule,
   ],
 })
 export class AppModule {}
