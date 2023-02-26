@@ -33,4 +33,8 @@ export abstract class IMutation {
     abstract createProduct(input?: Nullable<NewProduct>): Nullable<Product> | Promise<Nullable<Product>>;
 }
 
+export abstract class ISubscription {
+    abstract addedProduct(title: string): Nullable<Product> | Promise<Nullable<Product>>;
+}
+
 type Nullable<T> = T | null;

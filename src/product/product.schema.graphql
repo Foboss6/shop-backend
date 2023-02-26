@@ -22,3 +22,7 @@ input NewProduct {
 type Mutation {
   createProduct(input: NewProduct): Product
 }
+
+type Subscription {
+  addedProduct(title: String!): Product
+}
