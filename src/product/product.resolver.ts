@@ -1,33 +1,29 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { ProductService } from './product.service';
-import { Product } from 'src/graphql';
-import { ProductDto } from './dto/product.dto';
-// import { PubSub } from 'graphql-subscriptions';
+import { Product } from './models';
+import { DeleteProductInput, NewProductInput, UpdateProductInput } from './dto';
 
-@Resolver()
+@Resolver(() => Product)
 export class ProductResolver {
-  // private pubSub: PubSub = new PubSub();
-
   constructor(private readonly productService: ProductService) {}
 
-  @Query('getAllProducts')
+  @Query(() => [Product], { name: 'getAllProducts' })
   async getAllProducts(): Promise<Product[]> {
     return this.productService.getAllProducts();
   }
 
-  @Mutation('createProduct')
-  createProduct(@Args('input') product: ProductDto) {
-    const addedProduct = this.productService.createProduct(product);
-
-    // this.pubSub.publish('addedProduct', { addedProduct });
-
-    return addedProduct;
+  @Mutation(() => Product, { name: 'createProduct' })
+  createProduct(@Args('input') product: NewProductInput) {
+    return this.productService.createProduct(product);
   }
 
-  // @Subscription(() => Product, {
-  //   filter: (payload, variables) => payload.addedProduct.title === variables.title,
-  // })
-  // async addedProduct() {
-  //   this.pubSub.asyncIterator('addedProduct');
-  // }
+  @Mutation(() => Product, { name: 'updateProduct' })
+  updateProduct(@Args('input') product: UpdateProductInput) {
+    return this.productService.updateProduct(product);
+  }
+
+  @Mutation(() => Boolean, { name: 'deleteProduct' })
+  deleteProduct(@Args('input') product: DeleteProductInput) {
+    return this.productService.deleteProduct(product);
+  }
 }

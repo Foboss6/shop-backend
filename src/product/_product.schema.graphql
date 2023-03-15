@@ -5,6 +5,8 @@ type Product {
   qty: Int!
   description: String
   category: String
+  createdOn: String
+  updatedOn: String
 }
 
 type Query {
