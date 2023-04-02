@@ -1,11 +1,9 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { BaseEntity } from 'src/shared/entities';
+import { Column, Entity } from 'typeorm';
 import { IProduct } from '../types';
 
 @Entity('products')
-export class ProductEntity implements IProduct {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
-
+export class ProductEntity extends BaseEntity implements IProduct {
   @Column()
   title: string;
 
@@ -20,10 +18,4 @@ export class ProductEntity implements IProduct {
 
   @Column({ nullable: true, default: null })
   category: string;
-
-  @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP(6)', update: false })
-  createdOn: Date;
-
-  @UpdateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP(6)', onUpdate: 'CURRENT_TIMESTAMP(6)' })
-  updatedOn: Date;
 }

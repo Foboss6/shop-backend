@@ -22,8 +22,8 @@ export class Product implements IProduct {
   category: string;
 
   @Field()
-  createdOn: Date;
+  createdAt: Date;
 
   @Field()
-  updatedOn: Date;
+  updatedAt: Date;
 }

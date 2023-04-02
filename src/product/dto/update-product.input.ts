@@ -6,7 +6,7 @@ import { NewProductInput } from './new-product.input';
 @InputType()
 export class UpdateProductInput
   extends PartialType(NewProductInput)
-  implements Partial<Omit<IProduct, 'createdOn' | 'updatedOn'>>
+  implements Partial<Omit<IProduct, 'createdAt' | 'updatedAt'>>
 {
   @Field()
   @IsString()

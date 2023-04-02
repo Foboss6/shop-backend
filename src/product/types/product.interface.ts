@@ -5,6 +5,6 @@ export class IProduct {
   qty: number;
   description: string;
   category: string;
-  createdOn: Date;
-  updatedOn: Date;
+  createdAt: Date;
+  updatedAt: Date;
 }

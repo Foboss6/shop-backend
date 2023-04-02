@@ -10,8 +10,8 @@ type Product {
   qty: Int!
   description: String
   category: String!
-  createdOn: DateTime!
-  updatedOn: DateTime!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 """
